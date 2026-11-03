@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #btnPlay {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 150px;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out, opacity 0.2s;
+        }
+        #btnPlay:active {
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cambia 'tu-audio.mp3' por el nombre exacto de tu archivo subido a GitHub -->
+    <audio id="miAudio" src="Feermina.mp3"></audio>
+    
+    <button id="btnPlay">▶</button>
+
+    <script>
+        const audio = document.getElementById('miAudio');
+        const btn = document.getElementById('btnPlay');
+
+        btn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '⏸'; // Cambia al icono de pausa
+            } else {
+                audio.pause();
+                btn.innerHTML = '▶'; // Cambia al icono de play
+            }
+        });
+
+        // Opcional: Volver al icono de play cuando termine el audio
+        audio.addEventListener('ended', () => {
+            btn.innerHTML = '▶';
+        });
+    </script>
+
+</body>
+</html>
